@@ -42,6 +42,7 @@ namespace SpaDay.Controllers
         [Route("/spa")]
         public IActionResult Menu(string name, string skintype, string manipedi)
         {
+            string descript;
             List<string> facials = new List<string>()
             {
                 "Microdermabrasion", "Hydrofacial", "Rejuvenating", "Enzyme Peel"
@@ -55,6 +56,20 @@ namespace SpaDay.Controllers
                     appropriateFacials.Add(facials[i]);
                 }
             }
+
+            if(manipedi == "manicure")
+            {
+                descript = "Our manicure is a great way to spend 30 minutes of your day! We use shea butter hand cream and the finest gel polish.";
+            }
+            else
+            {
+                descript = "Relax for 45 minutes in pure luxury! Our massage chairs and experienced nail techs are here to get your feet in shape for sandal season!";
+            }
+
+            ViewBag.descript = descript;
+            ViewBag.appropriateFacials = appropriateFacials;
+            ViewBag.skintype = skintype;
+            ViewBag.name = name;
             return View();
         }
 
